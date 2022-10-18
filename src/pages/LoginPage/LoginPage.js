@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledLoginPage, LoginForm } from "./style";
+import { StyledLoginPage, LoginForm, LoginInput } from "./style";
 import logo from "../../assets/images/logo.svg";
 
 function LoginPage() {
@@ -7,8 +7,8 @@ function LoginPage() {
         <StyledLoginPage>
             <img src={logo} alt="Logo do TrackIt" />
             <LoginForm>
-                <input placeholder="email"></input>
-                <input placeholder="senha"></input>
+                <LoginInput placeholder="email"></LoginInput>
+                <LoginInput placeholder="senha"></LoginInput>
                 <button>Entrar</button>
             </LoginForm>
             <p>Não tem uma conta? Cadastre-se!</p>

@@ -6,7 +6,7 @@ import {
 } from "./style";
 import logo from "../../assets/images/logo.svg";
 import TrackItResource from "../../common/TrackItResource";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
 
 function RegistrationPage() {
@@ -15,17 +15,19 @@ function RegistrationPage() {
         name: "",
         image: "",
         password: "",
-        // error: "error",
     });
-    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
 
     function handleForm(e) {
         const { name, value } = e.target;
         setForm({ ...form, [name]: value });
     }
 
-    console.log(form);
+    const errorMessage = {
+        409: "Usuário já cadastrado!",
+        422: "Dados inválidos!",
+    };
 
     async function registerUser(e) {
         e.preventDefault();
@@ -35,7 +37,9 @@ function RegistrationPage() {
             await TrackItResource.createUser(form);
             navigate("/hoje");
         } catch (err) {
-            console.error(err.response.data);
+            alert(errorMessage[err.response.status]);
+            console.error(err.response);
+            setIsLoading(false);
         }
     }
 
@@ -49,6 +53,7 @@ function RegistrationPage() {
                     value={form.email}
                     placeholder="email"
                     disabled={isLoading}
+                    required
                 ></RegistrationInput>
                 <RegistrationInput
                     name="password"
@@ -57,6 +62,7 @@ function RegistrationPage() {
                     placeholder="senha"
                     type="password"
                     disabled={isLoading}
+                    required
                 ></RegistrationInput>
                 <RegistrationInput
                     name="name"
@@ -64,6 +70,7 @@ function RegistrationPage() {
                     value={form.name}
                     placeholder="nome"
                     disabled={isLoading}
+                    required
                 ></RegistrationInput>
                 <RegistrationInput
                     name="image"
@@ -71,6 +78,7 @@ function RegistrationPage() {
                     value={form.image}
                     placeholder="foto"
                     disabled={isLoading}
+                    required
                 ></RegistrationInput>
                 <button>
                     {isLoading ? (
@@ -86,7 +94,9 @@ function RegistrationPage() {
                     )}
                 </button>
             </RegistrationForm>
-            <p>Já tem uma conta? Faça login!</p>
+            <Link to={"/"}>
+                <p>Já tem uma conta? Faça login!</p>
+            </Link>
         </StyledRegistrationPage>
     );
 }
