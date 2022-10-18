@@ -139,6 +139,29 @@ const GlobalStyle = createGlobalStyle`
     #root {
         font-family: 'Lexend Deca', sans-serif;
     }
+
+    input {
+        width: 303px;
+        height: 45px;
+        border: 1px solid #D5D5D5;
+        border-radius: 5px;
+
+        font-size: 19.976px;
+        color: #666;
+        padding-left: 11px;
+    }
+
+    input::placeholder {
+        color: #dbdbdb;
+    }
+
+    button {
+        background: #52B6FF;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+    }
 `;
 
 export default GlobalStyle;
