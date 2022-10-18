@@ -149,10 +149,10 @@ const GlobalStyle = createGlobalStyle`
         font-size: 19.976px;
         color: #666;
         padding-left: 11px;
-    }
 
-    input::placeholder {
-        color: #dbdbdb;
+        &::placeholder{
+            color: #dbdbdb;
+        }
     }
 
     button {
@@ -161,6 +161,9 @@ const GlobalStyle = createGlobalStyle`
         border: none;
         color: #fff;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 `;
 

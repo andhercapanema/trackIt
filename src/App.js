@@ -5,6 +5,7 @@ import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import HabitsPage from "./pages/HabitsPage/HabitsPage";
+import TodayPage from "./pages/TodayPage/TodayPage";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Route path="/" element={<LoginPage />} />
                 <Route path="/cadastro" element={<RegistrationPage />} />
                 <Route path="/habitos" element={<HabitsPage />} />
+                <Route path="/hoje" element={<TodayPage />} />
             </Routes>
             <Footer />
         </BrowserRouter>

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledLoginPage = styled.main`
     display: flex;
@@ -24,10 +24,6 @@ export const LoginForm = styled.form`
     display: flex;
     flex-direction: column;
 
-    input {
-        margin-bottom: 6px;
-    }
-
     button {
         margin-bottom: 25px;
         height: 45px;
@@ -35,4 +31,15 @@ export const LoginForm = styled.form`
 
         font-size: 21px;
     }
+`;
+
+export const LoginInput = styled.input`
+    margin-bottom: 6px;
+
+    ${({ disabled }) =>
+        disabled &&
+        css`
+            background: #f2f2f2;
+            color: #afafaf;
+        `}
 `;
