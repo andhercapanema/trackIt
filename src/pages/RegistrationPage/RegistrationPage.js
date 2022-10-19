@@ -5,7 +5,7 @@ import {
     RegistrationInput,
 } from "./style";
 import logo from "../../assets/images/logo.svg";
-import TrackItResource from "../../common/TrackItResource";
+import TrackItResource from "../../common/services/TrackItResource";
 import { Link, useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
 
@@ -35,7 +35,7 @@ function RegistrationPage() {
         try {
             setIsLoading(true);
             await TrackItResource.createUser(form);
-            navigate("/hoje");
+            navigate("/");
         } catch (err) {
             alert(errorMessage[err.response.status]);
             console.error(err.response);

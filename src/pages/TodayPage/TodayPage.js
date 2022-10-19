@@ -1,5 +1,6 @@
 import React from "react";
+import { StyledTodayPage } from "./style";
 
 export default function TodayPage() {
-    return <div>TodayPage</div>;
+    return <StyledTodayPage>TodayPage</StyledTodayPage>;
 }
