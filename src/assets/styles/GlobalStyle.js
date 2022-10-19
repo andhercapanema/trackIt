@@ -1,4 +1,7 @@
 import { createGlobalStyle } from "styled-components";
+import COLORS from "../../common/constants/color";
+
+console.log(COLORS);
 
 const GlobalStyle = createGlobalStyle`
     html,
@@ -144,20 +147,20 @@ const GlobalStyle = createGlobalStyle`
     input {
         width: 303px;
         height: 45px;
-        border: 1px solid #D5D5D5;
+        border: 1px solid ${COLORS.input.border};
         border-radius: 5px;
 
         font-size: 19.976px;
-        color: #666;
+        color: ${COLORS.text};
         padding-left: 11px;
 
         &::placeholder{
-            color: #dbdbdb;
+            color: ${COLORS.input.placeholder};
         }
     }
 
     button {
-        background: #52B6FF;
+        background: ${COLORS.accent2};
         border-radius: 5px;
         border: none;
         color: #fff;
