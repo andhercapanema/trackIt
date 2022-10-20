@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import {
-    StyledRegistrationPage,
-    RegistrationForm,
-    RegistrationInput,
-} from "./style";
+import { StyledRegistrationPage, RegistrationForm } from "./style";
 import logo from "../../assets/images/logo.svg";
 import TrackItResource from "../../common/services/TrackItResource";
 import { Link, useNavigate } from "react-router-dom";
@@ -46,16 +42,16 @@ function RegistrationPage() {
     return (
         <StyledRegistrationPage>
             <img src={logo} alt="Logo do TrackIt" />
-            <RegistrationForm onSubmit={registerUser}>
-                <RegistrationInput
+            <RegistrationForm onSubmit={registerUser} isLoading={isLoading}>
+                <input
                     name="email"
                     onChange={handleForm}
                     value={form.email}
                     placeholder="email"
                     disabled={isLoading}
                     required
-                ></RegistrationInput>
-                <RegistrationInput
+                ></input>
+                <input
                     name="password"
                     onChange={handleForm}
                     value={form.password}
@@ -63,23 +59,23 @@ function RegistrationPage() {
                     type="password"
                     disabled={isLoading}
                     required
-                ></RegistrationInput>
-                <RegistrationInput
+                ></input>
+                <input
                     name="name"
                     onChange={handleForm}
                     value={form.name}
                     placeholder="nome"
                     disabled={isLoading}
                     required
-                ></RegistrationInput>
-                <RegistrationInput
+                ></input>
+                <input
                     name="image"
                     onChange={handleForm}
                     value={form.image}
                     placeholder="foto"
                     disabled={isLoading}
                     required
-                ></RegistrationInput>
+                ></input>
                 <button>
                     {isLoading ? (
                         <ThreeDots

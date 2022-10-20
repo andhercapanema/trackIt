@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, css } from "styled-components";
 import COLORS from "../../common/constants/color";
 
 console.log(COLORS);
@@ -142,12 +142,13 @@ const GlobalStyle = createGlobalStyle`
 
     #root {
         font-family: 'Lexend Deca', sans-serif;
+        background: ${COLORS.base};
     }
 
     input {
         width: 303px;
         height: 45px;
-        border: 1px solid ${COLORS.input.border};
+        border: 1px solid ${COLORS.border};
         border-radius: 5px;
 
         font-size: 19.976px;
@@ -155,7 +156,7 @@ const GlobalStyle = createGlobalStyle`
         padding-left: 11px;
 
         &::placeholder{
-            color: ${COLORS.input.placeholder};
+            color: ${COLORS.placeholder};
         }
     }
 

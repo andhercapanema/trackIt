@@ -11,7 +11,9 @@ import { useState } from "react";
 import HistoryPage from "./pages/HistoryPage/HistoryPage";
 
 function App() {
-    const [user, setUser] = useState({});
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const [user, setUser] = useState(storedUser);
+    console.log(user);
 
     return (
         <BrowserRouter>
@@ -19,11 +21,14 @@ function App() {
             <UserContext.Provider value={user}>
                 <Header />
                 <Routes>
-                    <Route path="/" element={<LoginPage setUser={setUser} />} />
+                    <Route
+                        path="/"
+                        element={<LoginPage user={user} setUser={setUser} />}
+                    />
                     <Route path="/cadastro" element={<RegistrationPage />} />
                     <Route path="/habitos" element={<HabitsPage />} />
                     <Route path="/hoje" element={<TodayPage />} />
-                    <Route path="/history" element={<HistoryPage />} />
+                    <Route path="/historico" element={<HistoryPage />} />
                 </Routes>
                 <Footer />
             </UserContext.Provider>

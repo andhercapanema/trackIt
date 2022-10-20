@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { StyledLoginPage, LoginForm, LoginInput } from "./style";
+import { StyledLoginPage, LoginForm } from "./style";
 import logo from "../../assets/images/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import TrackItResource from "../../common/services/TrackItResource";
 import { ThreeDots } from "react-loader-spinner";
 
-function LoginPage({ setUser }) {
+function LoginPage({ user, setUser }) {
     const [form, setForm] = useState({
         email: "",
         password: "",
@@ -41,26 +41,24 @@ function LoginPage({ setUser }) {
     }
 
     useEffect(() => {
-        const storedUser = JSON.parse(localStorage.getItem("user"));
-        if (storedUser !== null) {
-            setUser(storedUser);
+        if (user !== null) {
             navigate("/hoje");
         }
-    }, [setUser, navigate]);
+    }, [user, navigate]);
 
     return (
         <StyledLoginPage>
             <img src={logo} alt="Logo do TrackIt" />
-            <LoginForm onSubmit={login}>
-                <LoginInput
+            <LoginForm onSubmit={login} isLoading={isLoading}>
+                <input
                     name="email"
                     onChange={handleForm}
                     value={form.email}
                     placeholder="email"
                     disabled={isLoading}
                     required
-                ></LoginInput>
-                <LoginInput
+                ></input>
+                <input
                     name="password"
                     onChange={handleForm}
                     value={form.password}
@@ -68,7 +66,7 @@ function LoginPage({ setUser }) {
                     disabled={isLoading}
                     type="password"
                     required
-                ></LoginInput>
+                ></input>
                 <button>
                     {isLoading ? (
                         <ThreeDots

@@ -4,10 +4,8 @@ const COLORS = {
     accent2: "#52b6ff",
     text: "#666",
     selected: "#cfcfcf",
-    input: {
-        placeholder: "#dbdbdb",
-        border: "#d5d5d5",
-    },
+    border: "#d5d5d5",
+    placeholder: "#dbdbdb",
     disabledInput: {
         placeholder: "#afafaf",
     },
