@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StyledTodayPage } from "./style";
 import dayjs from "dayjs";
 import TodayHabitCard from "./TodayHabitCard";
 import TrackItResource from "../../common/services/TrackItResource";
+import { ConcludedContext } from "../../common/contexts/ConcludedContext";
 
 export default function TodayPage() {
     const [todayHabitsList, setTodayHabitsList] = useState([]);
     const [concludedHabits, setConcludedHabits] = useState([]);
-    const percentageOfConcludedHabits = Math.round(
-        (concludedHabits.length / todayHabitsList.length) * 100
-    );
+    const concluded = useContext(ConcludedContext);
 
     function translateWeekday(date) {
         const weekDays = {
@@ -28,8 +27,21 @@ export default function TodayPage() {
     async function updateTodayHabits() {
         try {
             const res = await TrackItResource.getTodayHabits();
-            setTodayHabitsList(res.data);
-            setConcludedHabits(res.data.filter((habit) => habit.done));
+
+            const updatedTodayHabitsList = res.data;
+            const updatedConcludedHabits = updatedTodayHabitsList.filter(
+                (habit) => habit.done
+            );
+
+            setTodayHabitsList(updatedTodayHabitsList);
+            setConcludedHabits(updatedConcludedHabits);
+            concluded.setPercentageConcluded(
+                Math.round(
+                    (updatedConcludedHabits.length /
+                        updatedTodayHabitsList.length) *
+                        100
+                )
+            );
         } catch (err) {
             console.log(err);
         }
@@ -63,7 +75,7 @@ export default function TodayPage() {
             {concludedHabits.length === 0 ? (
                 <h3>Nenhum hábito concluído ainda</h3>
             ) : (
-                <h3>{percentageOfConcludedHabits}% dos hábitos concluídos</h3>
+                <h3>{concluded.percentageConcluded}% dos hábitos concluídos</h3>
             )}
 
             {todayHabitsList.map((habit) => (

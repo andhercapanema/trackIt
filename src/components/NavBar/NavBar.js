@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { StyledNavBar, StyledProgressbar } from "./style";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import { ConcludedContext } from "../../common/contexts/ConcludedContext";
 
 function NavBar() {
     const location = useLocation();
+    const concluded = useContext(ConcludedContext);
 
     if (location.pathname === "/" || location.pathname === "/cadastro") {
         return <></>;
@@ -19,7 +21,7 @@ function NavBar() {
             <Link to={"/hoje"}>
                 <StyledProgressbar>
                     <CircularProgressbar
-                        value={50}
+                        value={concluded.percentageConcluded}
                         text="Hoje"
                         background
                         backgroundPadding={6}
