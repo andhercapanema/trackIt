@@ -1,4 +1,4 @@
-import { createGlobalStyle, css } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 import COLORS from "../../common/constants/color";
 
 console.log(COLORS);
@@ -92,6 +92,7 @@ const GlobalStyle = createGlobalStyle`
         font: inherit;
         vertical-align: baseline;
         text-decoration: none;
+        list-style-type: none;
     }
 
     /* HTML5 display-role reset for older browsers */

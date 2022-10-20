@@ -17,6 +17,10 @@ export const StyledHabitsPage = styled(StyledTodayPage)`
         line-height: 22px;
         color: ${COLORS.text};
     }
+
+    h3 {
+        margin: 0;
+    }
 `;
 
 export const StyledRow = styled.div`
@@ -117,7 +121,6 @@ export const StyledHabitCard = styled.li`
     height: 91px;
     border-radius: 5px;
     background: #fff;
-    list-style-type: none;
     margin-bottom: 10px;
     padding: 15px;
     display: flex;
