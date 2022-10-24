@@ -29,7 +29,6 @@ function LoginPage({ user, setUser }) {
 
         try {
             const res = await TrackItResource.login(form);
-            console.log(res.data);
             setUser(res.data);
             navigate("/hoje");
             localStorage.setItem("user", JSON.stringify(res.data));

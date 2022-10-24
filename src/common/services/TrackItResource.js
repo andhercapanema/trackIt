@@ -9,6 +9,7 @@ const TrackItResource = {
     getTodayHabits: () => api.get("/habits/today"),
     checkHabit: (habitId) => api.post(`/habits/${habitId}/check`),
     uncheckHabit: (habitId) => api.post(`/habits/${habitId}/uncheck`),
+    getHistory: () => api.get("/habits/history/daily"),
 };
 
 export default TrackItResource;

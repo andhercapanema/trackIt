@@ -20,7 +20,6 @@ function HabitsPage() {
         try {
             const res = await TrackItResource.getHabits();
             setHabitsList(res.data);
-            console.log(res.data);
         } catch (err) {
             console.log(err);
         }

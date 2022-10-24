@@ -1,8 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import COLORS from "../../common/constants/color";
 
-console.log(COLORS);
-
 const GlobalStyle = createGlobalStyle`
     html,
     body,

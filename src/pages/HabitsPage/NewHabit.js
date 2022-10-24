@@ -31,7 +31,7 @@ export default function NewHabit({
 
         setIsLoading(true);
         try {
-            const res = await TrackItResource.createHabit(form);
+            await TrackItResource.createHabit(form);
             await updateHabits();
             setIsAddingHabit(false);
             setIsLoading(false);
@@ -39,7 +39,6 @@ export default function NewHabit({
                 name: "",
                 days: [],
             });
-            console.log(res.data);
         } catch (err) {
             console.error(err.response);
         }

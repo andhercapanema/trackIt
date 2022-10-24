@@ -35,7 +35,7 @@ function NavBar() {
                     />
                 </StyledProgressbar>
             </Link>
-            <Link to={"/history"}>
+            <Link to={"/historico"}>
                 <button>Histórico</button>
             </Link>
         </StyledNavBar>
