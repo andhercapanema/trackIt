@@ -73,11 +73,15 @@ export default function TodayPage() {
 
     return (
         <StyledTodayPage>
-            <h2>{translateWeekday(dayjs().format("dddd, DD/MM"))}</h2>
+            <h2 data-identifier="today-infos">
+                {translateWeekday(dayjs().format("dddd, DD/MM"))}
+            </h2>
             {concludedHabits.length === 0 ? (
                 <h3>Nenhum hábito concluído ainda</h3>
             ) : (
-                <h3>{percentageConcluded}% dos hábitos concluídos</h3>
+                <h3 data-identifier="today-infos">
+                    {percentageConcluded}% dos hábitos concluídos
+                </h3>
             )}
 
             {todayHabitsList.map((habit) => (
@@ -85,6 +89,7 @@ export default function TodayPage() {
                     key={habit.id}
                     habit={habit}
                     toggleHabit={toggleHabit}
+                    data-identifier="today-infos"
                 />
             ))}
         </StyledTodayPage>

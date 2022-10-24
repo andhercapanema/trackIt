@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyledTodayHabitCard } from "./style";
 
 function TodayHabitCard({ habit, toggleHabit }) {
@@ -23,6 +23,7 @@ function TodayHabitCard({ habit, toggleHabit }) {
             <ion-icon
                 name="checkbox"
                 onClick={() => toggleHabit(habit)}
+                data-identifier="done-habit-btn"
             ></ion-icon>
         </StyledTodayHabitCard>
     );

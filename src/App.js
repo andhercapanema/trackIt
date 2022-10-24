@@ -33,29 +33,16 @@ function App() {
                 >
                     <Header />
                     <Routes>
-                        <Route
-                            path="/"
-                            element={<LoginPage setUser={setUser} />}
-                        />
+                        <Route path="/" element={<LoginPage />} />
                         <Route
                             path="/cadastro"
                             element={<RegistrationPage />}
                         />
                         <Route path="/habitos" element={<HabitsPage />} />
-                        <Route
-                            path="/hoje"
-                            element={
-                                <TodayPage
-                                    percentageConcluded={percentageConcluded}
-                                    setPercentageConcluded={
-                                        setPercentageConcluded
-                                    }
-                                />
-                            }
-                        />
+                        <Route path="/hoje" element={<TodayPage />} />
                         <Route path="/historico" element={<HistoryPage />} />
                     </Routes>
-                    <NavBar percentageConcluded={percentageConcluded} />
+                    <NavBar />
                 </ConcludedContext.Provider>
             </UserContext.Provider>
         </BrowserRouter>

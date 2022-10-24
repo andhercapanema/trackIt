@@ -7,7 +7,7 @@ import { ConcludedContext } from "../../common/contexts/ConcludedContext";
 
 function NavBar() {
     const location = useLocation();
-    const concluded = useContext(ConcludedContext);
+    const { percentageConcluded } = useContext(ConcludedContext);
 
     if (location.pathname === "/" || location.pathname === "/cadastro") {
         return <></>;
@@ -15,13 +15,13 @@ function NavBar() {
 
     return (
         <StyledNavBar>
-            <Link to={"/habitos"}>
+            <Link to={"/habitos"} data-identifier="habit-page-action">
                 <button>Hábitos</button>
             </Link>
             <Link to={"/hoje"}>
                 <StyledProgressbar>
                     <CircularProgressbar
-                        value={concluded.percentageConcluded}
+                        value={percentageConcluded}
                         text="Hoje"
                         background
                         backgroundPadding={6}
@@ -35,7 +35,7 @@ function NavBar() {
                     />
                 </StyledProgressbar>
             </Link>
-            <Link to={"/historico"}>
+            <Link to={"/historico"} data-identifier="historic-page-action">
                 <button>Histórico</button>
             </Link>
         </StyledNavBar>

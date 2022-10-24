@@ -14,6 +14,7 @@ function WeekList({ toggleDay = null, selectedDays }) {
                     type="button"
                     value={day}
                     disabled={toggleDay === null}
+                    data-identifier="week-day-btn"
                 />
             ))}
         </StyledWeekList>

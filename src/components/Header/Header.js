@@ -34,6 +34,7 @@ function Header() {
                 src={user?.image}
                 alt="Foto de perfil do usuário"
                 onClick={logout}
+                data-identifier="avatar"
             />
         </StyledHeader>
     );

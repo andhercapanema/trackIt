@@ -53,6 +53,7 @@ export default function NewHabit({
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     required
                     disabled={isLoading}
+                    data-identifier="input-habit-name"
                 ></input>
                 <WeekList
                     toggleDay={isLoading ? null : toggleDay}
@@ -63,10 +64,15 @@ export default function NewHabit({
                 <button
                     onClick={() => setIsAddingHabit(false)}
                     disabled={isLoading}
+                    data-identifier="cancel-habit-create-btn"
                 >
                     Cancelar
                 </button>
-                <button type="submit" disabled={isLoading}>
+                <button
+                    type="submit"
+                    disabled={isLoading}
+                    data-identifier="save-habit-create-btn"
+                >
                     {isLoading ? (
                         <ThreeDots
                             height="11"

@@ -40,7 +40,9 @@ function HabitsPage() {
         <StyledHabitsPage>
             <StyledRow>
                 <h2>Meus Hábitos</h2>
-                <button onClick={addHabit}>+</button>
+                <button onClick={addHabit} data-identifier="create-habit-btn">
+                    +
+                </button>
             </StyledRow>
             {isAddingHabit && (
                 <NewHabit
@@ -51,7 +53,7 @@ function HabitsPage() {
                 />
             )}
             {habitsList.length === 0 ? (
-                <p>
+                <p data-identifier="no-habit-message">
                     Você não tem nenhum hábito cadastrado ainda. Adicione um
                     hábito para começar a trackear!
                 </p>

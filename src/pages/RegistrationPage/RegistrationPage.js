@@ -58,6 +58,7 @@ function RegistrationPage() {
                     placeholder="email"
                     disabled={isLoading}
                     required
+                    data-identifier="input-email"
                 ></input>
                 <input
                     name="password"
@@ -67,6 +68,7 @@ function RegistrationPage() {
                     type="password"
                     disabled={isLoading}
                     required
+                    data-identifier="input-password"
                 ></input>
                 <input
                     name="name"
@@ -75,6 +77,7 @@ function RegistrationPage() {
                     placeholder="nome"
                     disabled={isLoading}
                     required
+                    data-identifier="input-name"
                 ></input>
                 <input
                     name="image"
@@ -83,6 +86,7 @@ function RegistrationPage() {
                     placeholder="foto"
                     disabled={isLoading}
                     required
+                    data-identifier="input-photo"
                 ></input>
                 <button>
                     {isLoading ? (
@@ -98,7 +102,7 @@ function RegistrationPage() {
                     )}
                 </button>
             </RegistrationForm>
-            <Link to={"/"}>
+            <Link to={"/"} data-identifier="back-to-login-action">
                 <p>Já tem uma conta? Faça login!</p>
             </Link>
         </StyledRegistrationPage>
