@@ -58,6 +58,7 @@ function LoginPage() {
                     placeholder="email"
                     disabled={isLoading}
                     required
+                    data-identifier="input-email"
                 ></input>
                 <input
                     name="password"
@@ -67,8 +68,9 @@ function LoginPage() {
                     disabled={isLoading}
                     type="password"
                     required
+                    data-identifier="input-password"
                 ></input>
-                <button>
+                <button data-identifier="login-btn">
                     {isLoading ? (
                         <ThreeDots
                             height="13"
@@ -82,7 +84,7 @@ function LoginPage() {
                     )}
                 </button>
             </LoginForm>
-            <Link to={"./cadastro"}>
+            <Link to={"./cadastro"} data-identifier="sign-up-action">
                 <p>Não tem uma conta? Cadastre-se!</p>
             </Link>
         </StyledLoginPage>

@@ -18,10 +18,10 @@ function Header() {
     }
 
     useEffect(() => {
-        if (user === null) {
+        if (user === null && location.pathname !== "/cadastro") {
             navigate("/");
         }
-    }, [user, navigate]);
+    }, [user, navigate, location.pathname]);
 
     if (location.pathname === "/" || location.pathname === "/cadastro") {
         return <></>;

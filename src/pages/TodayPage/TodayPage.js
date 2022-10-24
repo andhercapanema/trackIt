@@ -4,16 +4,12 @@ import dayjs from "dayjs";
 import TodayHabitCard from "./TodayHabitCard";
 import TrackItResource from "../../common/services/TrackItResource";
 import { ConcludedContext } from "../../common/contexts/ConcludedContext";
-import { UserContext } from "../../common/contexts/UserContext";
-import { useNavigate } from "react-router-dom";
 
 export default function TodayPage() {
     const [todayHabitsList, setTodayHabitsList] = useState([]);
     const [concludedHabits, setConcludedHabits] = useState([]);
     const { percentageConcluded, setPercentageConcluded } =
         useContext(ConcludedContext);
-    const { user } = useContext(UserContext);
-    const navigate = useNavigate();
 
     function translateWeekday(date) {
         const weekDays = {
