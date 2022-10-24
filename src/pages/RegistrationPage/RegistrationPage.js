@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StyledRegistrationPage, RegistrationForm } from "./style";
 import logo from "../../assets/images/logo.svg";
 import TrackItResource from "../../common/services/TrackItResource";
 import { Link, useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
+import { UserContext } from "../../common/contexts/UserContext";
 
 function RegistrationPage() {
     const [form, setForm] = useState({
@@ -14,6 +15,7 @@ function RegistrationPage() {
     });
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+    const { user } = useContext(UserContext);
 
     function handleForm(e) {
         const { name, value } = e.target;
@@ -38,6 +40,12 @@ function RegistrationPage() {
             setIsLoading(false);
         }
     }
+
+    useEffect(() => {
+        if (user !== null) {
+            navigate("/hoje");
+        }
+    }, [user, navigate]);
 
     return (
         <StyledRegistrationPage>

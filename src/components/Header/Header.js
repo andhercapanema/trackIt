@@ -1,11 +1,27 @@
-import React, { useContext } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { ConcludedContext } from "../../common/contexts/ConcludedContext";
 import { UserContext } from "../../common/contexts/UserContext";
 import { StyledHeader } from "./style";
 
 function Header() {
     const location = useLocation();
-    const user = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
+    const { setPercentageConcluded } = useContext(ConcludedContext);
+    const navigate = useNavigate();
+
+    function logout() {
+        navigate("/");
+        setUser(null);
+        setPercentageConcluded(0);
+        localStorage.clear();
+    }
+
+    useEffect(() => {
+        if (user === null) {
+            navigate("/");
+        }
+    }, [user, navigate]);
 
     if (location.pathname === "/" || location.pathname === "/cadastro") {
         return <></>;
@@ -14,7 +30,11 @@ function Header() {
     return (
         <StyledHeader>
             <h1>TrackIt</h1>
-            <img src={user.image} alt="Foto de perfil do usuário" />
+            <img
+                src={user?.image}
+                alt="Foto de perfil do usuário"
+                onClick={logout}
+            />
         </StyledHeader>
     );
 }

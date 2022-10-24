@@ -4,11 +4,16 @@ import dayjs from "dayjs";
 import TodayHabitCard from "./TodayHabitCard";
 import TrackItResource from "../../common/services/TrackItResource";
 import { ConcludedContext } from "../../common/contexts/ConcludedContext";
+import { UserContext } from "../../common/contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export default function TodayPage() {
     const [todayHabitsList, setTodayHabitsList] = useState([]);
     const [concludedHabits, setConcludedHabits] = useState([]);
-    const concluded = useContext(ConcludedContext);
+    const { percentageConcluded, setPercentageConcluded } =
+        useContext(ConcludedContext);
+    const { user } = useContext(UserContext);
+    const navigate = useNavigate();
 
     function translateWeekday(date) {
         const weekDays = {
@@ -35,7 +40,7 @@ export default function TodayPage() {
 
             setTodayHabitsList(updatedTodayHabitsList);
             setConcludedHabits(updatedConcludedHabits);
-            concluded.setPercentageConcluded(
+            setPercentageConcluded(
                 Math.round(
                     (updatedConcludedHabits.length /
                         updatedTodayHabitsList.length) *
@@ -43,7 +48,8 @@ export default function TodayPage() {
                 )
             );
         } catch (err) {
-            console.log(err);
+            console.log(err.response);
+            window.location.reload();
         }
     }
 
@@ -57,14 +63,14 @@ export default function TodayPage() {
                 await TrackItResource.uncheckHabit(selectedHabit.id);
                 updateTodayHabits();
             } catch (err) {
-                console.log(err);
+                console.log(err.response);
             }
         } else {
             try {
                 await TrackItResource.checkHabit(selectedHabit.id);
                 updateTodayHabits();
             } catch (err) {
-                console.log(err);
+                console.log(err.response);
             }
         }
     }
@@ -75,7 +81,7 @@ export default function TodayPage() {
             {concludedHabits.length === 0 ? (
                 <h3>Nenhum hábito concluído ainda</h3>
             ) : (
-                <h3>{concluded.percentageConcluded}% dos hábitos concluídos</h3>
+                <h3>{percentageConcluded}% dos hábitos concluídos</h3>
             )}
 
             {todayHabitsList.map((habit) => (

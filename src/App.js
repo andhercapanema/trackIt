@@ -19,7 +19,12 @@ function App() {
     return (
         <BrowserRouter>
             <GlobalStyle />
-            <UserContext.Provider value={user}>
+            <UserContext.Provider
+                value={{
+                    user: user,
+                    setUser: setUser,
+                }}
+            >
                 <ConcludedContext.Provider
                     value={{
                         percentageConcluded: percentageConcluded,
@@ -30,9 +35,7 @@ function App() {
                     <Routes>
                         <Route
                             path="/"
-                            element={
-                                <LoginPage user={user} setUser={setUser} />
-                            }
+                            element={<LoginPage setUser={setUser} />}
                         />
                         <Route
                             path="/cadastro"

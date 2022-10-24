@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StyledLoginPage, LoginForm } from "./style";
 import logo from "../../assets/images/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import TrackItResource from "../../common/services/TrackItResource";
 import { ThreeDots } from "react-loader-spinner";
+import { UserContext } from "../../common/contexts/UserContext";
 
-function LoginPage({ user, setUser }) {
+function LoginPage() {
     const [form, setForm] = useState({
         email: "",
         password: "",
     });
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+    const { user, setUser } = useContext(UserContext);
 
     function handleForm(e) {
         const { name, value } = e.target;
@@ -30,8 +32,8 @@ function LoginPage({ user, setUser }) {
         try {
             const res = await TrackItResource.login(form);
             setUser(res.data);
-            navigate("/hoje");
             localStorage.setItem("user", JSON.stringify(res.data));
+            navigate("/hoje");
         } catch (err) {
             alert(errorMessage[err.response.status]);
             console.error(err.response);

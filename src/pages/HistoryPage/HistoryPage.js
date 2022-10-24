@@ -15,7 +15,7 @@ export default function HistoryPage() {
             const res = await TrackItResource.getHistory();
             setHistory(res.data);
         } catch (err) {
-            console.log(err);
+            console.log(err.response);
         }
     }
 
