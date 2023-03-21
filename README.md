@@ -41,7 +41,11 @@ npm start
 
 ## Usage
 
-To use the application, simply create a user account and login. From there, you can log your daily activities, define habits and goals to be achieved, and track your progress with charts and reports.
+To use the application, simply create a user account and login. From there, you can log your daily activities, define habits and goals to be achieved, and track your progress with charts and reports. The layout of the application was designed for small screens.
+
+## Deploy Link
+
+<a href="https://driven-projeto11-trackit.vercel.app/" target="_blank">Click here to access the application</a>
 
 ## Contact
 
