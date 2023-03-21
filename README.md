@@ -13,9 +13,9 @@ With TrackIt, you can:
 
 ## Technologies
 
-| <img src="https://skillicons.dev/icons?i=react" /> | <img src="https://skillicons.dev/icons?i=express" /> | <img src="https://skillicons.dev/icons?i=mongodb" /> | <img src="https://skillicons.dev/icons?i=styledcomponents" /> |
-| :---: | :---: | :---: | :---: |
-| `ReactJS` | `Express` | `MongoDb` | `styled-components` |
+| <img src="https://skillicons.dev/icons?i=react" /> | <img src="https://skillicons.dev/icons?i=mongodb" /> | <img src="https://skillicons.dev/icons?i=styledcomponents" /> |
+| :---: | :---: | :---: |
+| `ReactJS` | `MongoDb` | `styled-components` |
 
 ## Installation
 
